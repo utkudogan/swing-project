@@ -4,11 +4,16 @@
  */
 package com.utkudogan.userinterface;
 
+import ArayuzIslemleri.RenkVeIconlar;
+import java.awt.Frame;
+
 /**
  *
  * @author utku.dogan
  */
 public class GirisEkrani extends javax.swing.JFrame {
+
+RenkVeIconlar renkVeIconlar = new RenkVeIconlar();
 
     /**
      * Creates new form GirisEkrani
@@ -30,7 +35,11 @@ public class GirisEkrani extends javax.swing.JFrame {
         jPanel_GirisIkon = new javax.swing.JPanel();
         jPanel_GirisParaametreleri = new javax.swing.JPanel();
         jPanel_Navigasyon = new javax.swing.JPanel();
+        jLabel_Close = new javax.swing.JLabel();
+        jLabel_Minimize = new javax.swing.JLabel();
+        jLabel_Move = new javax.swing.JLabel();
         jPanel_Kullanici_Ikon = new javax.swing.JPanel();
+        jLabel_UserIcon = new javax.swing.JLabel();
         jLabel_KurtarmaMesaji = new javax.swing.JLabel();
         jLabel_Sayac = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -58,30 +67,70 @@ public class GirisEkrani extends javax.swing.JFrame {
 
         jPanel_GirisParaametreleri.setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel_Navigasyon.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel_Navigasyon.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel_Close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cancel-beyaz.png"))); // NOI18N
+        jLabel_Close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_CloseMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel_CloseMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel_CloseMouseExited(evt);
+            }
+        });
+
+        jLabel_Minimize.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/minimize-beyaz.png"))); // NOI18N
+        jLabel_Minimize.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel_MinimizeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel_MinimizeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel_MinimizeMouseExited(evt);
+            }
+        });
+
+        jLabel_Move.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel_Move.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/move.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel_NavigasyonLayout = new javax.swing.GroupLayout(jPanel_Navigasyon);
         jPanel_Navigasyon.setLayout(jPanel_NavigasyonLayout);
         jPanel_NavigasyonLayout.setHorizontalGroup(
             jPanel_NavigasyonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_NavigasyonLayout.createSequentialGroup()
+                .addComponent(jLabel_Move, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel_Minimize)
+                .addGap(0, 0, 0)
+                .addComponent(jLabel_Close))
         );
         jPanel_NavigasyonLayout.setVerticalGroup(
             jPanel_NavigasyonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 71, Short.MAX_VALUE)
+            .addComponent(jLabel_Close)
+            .addComponent(jLabel_Minimize)
+            .addComponent(jLabel_Move)
         );
 
-        jPanel_Kullanici_Ikon.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel_Kullanici_Ikon.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel_UserIcon.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel_UserIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel_UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel_Kullanici_IkonLayout = new javax.swing.GroupLayout(jPanel_Kullanici_Ikon);
         jPanel_Kullanici_Ikon.setLayout(jPanel_Kullanici_IkonLayout);
         jPanel_Kullanici_IkonLayout.setHorizontalGroup(
             jPanel_Kullanici_IkonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addComponent(jLabel_UserIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel_Kullanici_IkonLayout.setVerticalGroup(
             jPanel_Kullanici_IkonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 153, Short.MAX_VALUE)
+            .addComponent(jLabel_UserIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jLabel_KurtarmaMesaji.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -94,13 +143,11 @@ public class GirisEkrani extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTextField_KullaniciAdi.setText("jTextField1");
         jTextField_KullaniciAdi.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Kullanıcı Adı", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
 
         jPasswordField_Sifre.setText("jPasswordField1");
         jPasswordField_Sifre.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Şifre", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
 
-        jTextField_KurtarmaKodu.setText("jTextField2");
         jTextField_KurtarmaKodu.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)), "Kurtarma Kodu", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
 
         jLabel_SifremiUnuttum.setForeground(new java.awt.Color(102, 102, 255));
@@ -108,28 +155,24 @@ public class GirisEkrani extends javax.swing.JFrame {
         jLabel_SifremiUnuttum.setText("Şifremi Unuttum");
 
         jButton_GirisYap.setBackground(new java.awt.Color(0, 255, 255));
-        jButton_GirisYap.setText("Giriş");
+        jButton_GirisYap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/enter.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField_KurtarmaKodu)
-                    .addComponent(jPasswordField_Sifre)
-                    .addComponent(jTextField_KullaniciAdi))
-                .addContainerGap())
+            .addComponent(jLabel_SifremiUnuttum, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTextField_KurtarmaKodu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPasswordField_Sifre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jTextField_KullaniciAdi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(77, 77, 77)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jButton_GirisYap, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel_SifremiUnuttum, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jButton_GirisYap, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {jPasswordField_Sifre, jTextField_KullaniciAdi, jTextField_KurtarmaKodu});
+
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -142,8 +185,10 @@ public class GirisEkrani extends javax.swing.JFrame {
                 .addComponent(jLabel_SifremiUnuttum)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton_GirisYap)
-                .addGap(0, 17, Short.MAX_VALUE))
+                .addGap(0, 102, Short.MAX_VALUE))
         );
+
+        jPanel1Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jPasswordField_Sifre, jTextField_KullaniciAdi, jTextField_KurtarmaKodu});
 
         javax.swing.GroupLayout jPanel_GirisParaametreleriLayout = new javax.swing.GroupLayout(jPanel_GirisParaametreleri);
         jPanel_GirisParaametreleri.setLayout(jPanel_GirisParaametreleriLayout);
@@ -164,11 +209,11 @@ public class GirisEkrani extends javax.swing.JFrame {
                 .addComponent(jPanel_Navigasyon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel_Kullanici_Ikon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel_GirisParaametreleriLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel_KurtarmaMesaji)
                     .addComponent(jLabel_Sayac))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -184,7 +229,9 @@ public class GirisEkrani extends javax.swing.JFrame {
         jPanel_AnaPanelLayout.setVerticalGroup(
             jPanel_AnaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel_GirisIkon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel_GirisParaametreleri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel_AnaPanelLayout.createSequentialGroup()
+                .addComponent(jPanel_GirisParaametreleri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -200,6 +247,30 @@ public class GirisEkrani extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel_MinimizeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_MinimizeMouseEntered
+        jLabel_Minimize.setIcon(renkVeIconlar.getMinimizeSiyah());
+    }//GEN-LAST:event_jLabel_MinimizeMouseEntered
+
+    private void jLabel_MinimizeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_MinimizeMouseExited
+        jLabel_Minimize.setIcon(renkVeIconlar.getMinimizeBeyaz());
+    }//GEN-LAST:event_jLabel_MinimizeMouseExited
+
+    private void jLabel_CloseMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CloseMouseEntered
+        jLabel_Close.setIcon(renkVeIconlar.getCancelSiyah());
+    }//GEN-LAST:event_jLabel_CloseMouseEntered
+
+    private void jLabel_CloseMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CloseMouseExited
+        jLabel_Close.setIcon(renkVeIconlar.getCancelBeyaz());
+    }//GEN-LAST:event_jLabel_CloseMouseExited
+
+    private void jLabel_CloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_CloseMouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel_CloseMouseClicked
+
+    private void jLabel_MinimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel_MinimizeMouseClicked
+        this.setState(Frame.ICONIFIED);
+    }//GEN-LAST:event_jLabel_MinimizeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -238,9 +309,13 @@ public class GirisEkrani extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton_GirisYap;
+    private javax.swing.JLabel jLabel_Close;
     private javax.swing.JLabel jLabel_KurtarmaMesaji;
+    private javax.swing.JLabel jLabel_Minimize;
+    private javax.swing.JLabel jLabel_Move;
     private javax.swing.JLabel jLabel_Sayac;
     private javax.swing.JLabel jLabel_SifremiUnuttum;
+    private javax.swing.JLabel jLabel_UserIcon;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_AnaPanel;
     private javax.swing.JPanel jPanel_GirisIkon;
